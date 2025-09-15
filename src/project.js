@@ -1,6 +1,9 @@
-class Project{
-   constructor(){
-      this.array=[];
+export class Project{
+   constructor(name, id){
+      this.name=name;
+      this.todos={};
+      this.id= id;
+      this.counter=0;
    }
    addTodo(todo){
       this.array.push(todo);

@@ -7,7 +7,7 @@
 </head>
 <body>
    <div id="head">
-      <div id="appName"><img src="../media/svg/category.svg" alt="" id="titleIcon"><div>To Do List</div></div>
+      <div id="appName"><img src="../media/svg/airplay-fill.svg" alt="" id="titleIcon"><div>To Do List</div></div>
       <div id="categories"><img src="../media/svg/category.svg" alt="" id="categoriesIcon"><div>Categories</div></div>
       <ol>
          <li>
@@ -15,7 +15,7 @@
             <div class="headlist">All</div>
             <div></div>
          </li>
-         <li>
+         <li >
             <img src="../media/svg/work.svg" alt="" class="headicon">
             <div class="headlist">Work</div>
             <div></div>
@@ -31,10 +31,50 @@
             <div></div>
          </li>
       </ol>
-      <div></div>
+      <div>
+         <li id="addProject">
+            <img src="../media/svg/airplay-fill.svg" alt="" class="headicon" id="plusCategory">
+            <div class="headlist">Create new</div>
+         </li>
+      </div>
    </div>
+   <dialog id="projectDialog" closedby="any">
+      <div class="form">
+         <div>
+            <label for="textDialog">Create new category</label>
+          <input type="text" name="title" id="textDialog">
+         </div>
+         <div>
+            <button id="closeDialog" autofocus>Cancel</button>
+          <button id="saveDialog" >Save</button>
+         </div>
+      </div>   
+   </dialog>
 
    <div id="main">
+      <div id="addTodo">
+         <form action="">
+            <label for="textTodo">Add Task</label>
+            <input type="text" id="textTodo"/>
+            <label for="descriptionTodo">Description</label>
+            <textarea id="descriptionTodo"></textarea>
+            <label for="selectTodo">Project</label>
+            <select name="Type" id="selectTodo">
+               <option value="none">None</option>
+               <option value="work">Work</option>
+               <option value="personal">Personal</option>
+            </select>
+            <label for="priorityTodo">Priority</label>
+            <select name="Type" id="priorityTodo">
+               <option value="Low">low</option>
+               <option value="Medium">Work</option>
+               <option value="High">Personal</option>
+            </select>
+            <input type="checkbox" value="Completed" id="checkboxTodo">
+            <label for="checkboxTodo">Status</label>
+            <button id="saveTodo" type="submit">Save</button>
+         </form>
+      </div>
    </div>
 
    <div id="tail">
