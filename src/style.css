@@ -1,0 +1,58 @@
+html, body{
+   min-height: 100vh;
+   min-width: 100vw;
+   display: flex;
+   background-color: rgb(252, 244, 244);
+}
+
+/*header*/
+#head{
+   min-width: 25vw;
+   background-color: aquamarine;
+   margin:0.2vw;
+   border-radius: 10px;
+}
+.headicon{
+   height: 5px;
+   width:5px;
+   display: flex;
+   align-items: center;
+}
+#appName{
+   display: flex;
+}
+#categories{
+   display: flex;
+   align-items: center;
+}
+#titleIcon, #categoriesIcon{
+   height: 1rem;
+   width: 1rem;
+}
+ol{
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+}
+li{
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   align-items: center;
+}
+
+/* main */
+#main{
+   width: 50vw;
+   min-height: 100vh;
+   background-color: whitesmoke ;
+}
+
+/* tail */
+#tail{
+   width: 25vw;
+   min-height: 100vh;
+   background-color: aqua;
+}
