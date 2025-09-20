@@ -5,7 +5,7 @@ import "./style.css";
 
 
 
-
+let selectTodo= document.querySelector("#selectTodo");
 //ProjectCreation
 let projectId=1;
 let projectList={}
@@ -14,10 +14,10 @@ function createProject(name){
    projectList[`${projectId}`]=new Project(name,projectId);
    console.log(ol);
    ol.appendChild(domProject(name,projectId++));
-   // let option= document.createElement("option");
-   // option.setAttribute("value",name);
-   // option.textContent=name;
-   // selectTodo.appendChild(option);
+   let option= document.createElement("option");
+   option.setAttribute("value",name);
+   option.textContent=name;
+   selectTodo.appendChild(option);
 }
 
 //Dialog
@@ -36,10 +36,6 @@ saveDialog.addEventListener("click",()=>{
    createProject(textDialog.value);
    projectDialog.close();
 });
-let todoSave= document.querySelector("#todoSave");
-todoSave.addEventListener("click",()=>{
-   createProject(textDialog.value);
-});
 
 //ToDo
 function createTodo(){
@@ -51,7 +47,7 @@ function createTodo(){
 //ToDoCreation
 let textTodo= document.querySelector("#textTodo");
 let descriptionTodo= document.querySelector("#descriptionTodo");
-let selectTodo= document.querySelector("#selectTodo");
+
 let priorityTodo= document.querySelector("#priorityTodo");
 let checkboxTodo= document.querySelector("#checkboxTodo");
 let saveTodo= document.querySelector("#saveTodo");
