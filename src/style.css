@@ -2,16 +2,34 @@ html, body{
    min-height: 100vh;
    min-width: 100vw;
    display: flex;
-   background-color: rgb(252, 244, 244);
+   margin:0;
+   padding: 0;
+   background-color: white;
+   --orange:#dc4c3e;
+   font-family: "Lucida Console";
 }
 
 /*header*/
 #head{
-   min-width: 25vw;
-   background-color: aquamarine;
-   margin:0.2vw;
-   border-radius: 10px;
+   width: max(15vw,280px);
+   visibility:initial;
+   background-color:rgb(253, 236, 240);
    cursor:default;
+   padding:0.5rem;
+   display: flex;
+   flex-direction: column;
+   gap:0.5rem;
+   flex-shrink: 0;
+   transition: all 0.5s ease;
+}
+
+@media(max-width:600px){
+   #head{
+   }
+}
+@media(max-width:1200px) and (min-width:601px){
+   #head{
+   }
 }
 .headicon{
    height: 1rem;
@@ -24,6 +42,15 @@ html, body{
 }
 #appName{
    display: flex;
+   font-family: "Showcard Gothic";
+   font-size: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: var(--orange);
+}
+#appName div{
+   transition: all 0.5s ease;
 }
 #categories{
    display: flex;
@@ -38,27 +65,42 @@ ol{
    padding: 0;
    margin: 0;
    display: flex;
+   gap:0.5rem;
    flex-direction: column;
+   color:#8d4e48;
+   padding-top:1rem;
+   padding-bottom: 1rem;
 }
-li{
+li, #projectMain{
    list-style: none;
    margin: 0;
    padding: 0;
    display: flex;
    align-items: center;
+   gap:0.5rem;
    cursor: pointer;   
 }
+#projectMain .headlist{
+   margin-right: auto;
+}
+#projectDropdown.rotateRA{
+   transform: rotate(-90deg);
+} 
+.headlist{
+   margin-right: auto;
+}
+/*project edit and delete dropdown*/
+
+
 
 /* main */
 #main{
-   width: 50vw;
-   min-height: 100vh;
+   padding:0.5rem;
    background-color: whitesmoke ;
 }
-/* tail */
-#tail{
-   width: 25vwh;
-   min-height: 100vh;
-   background-color: aqua;
+#sidebarInMain, #sidebar{
+   cursor: pointer;
 }
-
+#head.hidden, .hidden, #projectList.hidden{
+   display: none;
+}

@@ -4,40 +4,46 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>To Do List</title>
+   <link rel="icon" href="../media/svg/tickmark.svg.svg">
 </head>
 <body>
    <div id="head">
-      <div id="appName"><img src="../media/svg/airplay-fill.svg" alt="" id="titleIcon"><div>To Do List</div></div>
-      <div id="categories"><img src="../media/svg/category.svg" alt="" id="categoriesIcon"><div>Categories</div></div>
+      <div id="appName">
+         <div>To Do List</div>
+         <img class="headicon" id="sidebar" src="../media/svg/sidebarleft.svg" alt="">
+      </div>
+
       <ol>
          <li>
-            <img src="../media/svg/all.svg" alt="" class="headicon">
-            <div class="headlist">All</div>
-            <div></div>
-         </li>
-         <li >
-            <img src="../media/svg/work.svg" alt="" class="headicon">
-            <div class="headlist">Work</div>
+            <img src="../media/svg/plus.svg" alt="" class="headicon">
+            <div class="headlist">Add task</div>
             <div></div>
          </li>
          <li>
-            <img src="../media/svg/personal.svg" alt="" class="headicon">
-            <div class="headlist">Personal</div>
-            <div></div>
+            <img src="../media/svg/inbox.svg" alt="" class="headicon">
+            <div class="headlist">Index</div>
          </li>
          <li>
-            <img src="../media/svg/birthdate.svg" alt="" class="headicon">
-            <div class="headlist">Birthday</div>
+            <img src="../media/svg/tickmark.svg.svg" alt="" class="headicon">
+            <div class="headlist">Completed</div>
             <div></div>
          </li>
       </ol>
-      <div>
-         <li id="addProject">
-            <img src="../media/svg/airplay-fill.svg" alt="" class="headicon" id="plusCategory">
-            <div class="headlist">Create new</div>
-         </li>
+
+      <div id="myProjects">
+         <div id="projectMain">
+            <div class="headlist">My Projects</div>
+            <img src="../media/svg/plus.svg" alt="" class="headicon" id="plusCategory">
+            <img src="../media/svg/dropdown-arrow-svgrepo-com.svg" alt="" class="headicon" id="projectDropdown">
+         </div>
+         <ol id="projectList">
+            
+         </ol>
+         
       </div>
+      
    </div>
+
    <dialog id="projectDialog" closedby="any">
       <div class="form">
          <div>
@@ -52,6 +58,9 @@
    </dialog>
 
    <div id="main">
+      <div id="sidebarInMainDiv">
+         <img src="../media/svg/sidebarleft.svg" alt="" class="headicon hidden" id="sidebarInMain">
+      </div>
       <div id="addTodo">
          <form action="">
             <label for="textTodo">Add Task</label>
@@ -75,10 +84,6 @@
             <button id="saveTodo" type="submit">Save</button>
          </form>
       </div>
-   </div>
-
-   <div id="tail">
-
    </div>
 </body>
 </html>

@@ -12,4 +12,7 @@ export class Project{
       let idx= this.array.indexOf(todo);
       if (idx ==-1) this.array.splice(idx,1);
    }
+   editName(name){
+      this.name=name;
+   }
 }
