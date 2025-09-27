@@ -21,7 +21,8 @@ export function domProject(name,id){
    editImg.setAttribute("class","headicon");
    editImg.setAttribute("id",`edit${id}`);
    editImg.dataset.id=id;
-   li.appendChild(editImg)
+   console.log(editImg.dataset.id);
+   li.appendChild(editImg);
    //delete
    let deleteImg=document.createElement("img");
    deleteImg.src= deleteIcon;
@@ -29,6 +30,24 @@ export function domProject(name,id){
    deleteImg.setAttribute("id",`delete${id}`);
    deleteImg.dataset.id=id;
    li.appendChild(deleteImg);
+   //dialog
+   let dialog=document.createElement("dialog");
+   dialog.setAttribute("id",`dialog${id}`);
+
+   let input=document.createElement("input");
+   input.setAttribute("type","text");
+   input.value=div.textContent;
+   input.setAttribute("id",`input${id}`);
+   input.dataset.id=id;
+   dialog.append(input);
+
+   let save=document.createElement("button");
+   save.setAttribute("id",`save${id}`);
+   save.textContent="save";
+   save.dataset.id=id;
+   dialog.append(save);
+
+   li.appendChild(dialog);
    return li;
 }
 export function deleteFunction(deleteImg,id){

@@ -104,3 +104,7 @@ li, #projectMain{
 #head.hidden, .hidden, #projectList.hidden{
    display: none;
 }
+
+.pressed{
+   background-color: rgb(211, 78, 122);
+}
