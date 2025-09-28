@@ -4,7 +4,40 @@ import { domProject } from "./domCreation";
 import {mainContent as todayPage} from "./Today";
 import { mainContent as completedPage } from "./Completed";
 import {mainContent as inboxPage} from "./Inbox";
+import { createProjectPage } from "./projectPage";
 import "./style.css";
+
+//<-------mainContent-------->
+//main content
+let mainContent=document.querySelector("#mainContent");
+todayPage.style.display="none";
+inboxPage.style.display="none";
+completedPage.style.display="none";
+mainContent.appendChild(todayPage);
+mainContent.appendChild(completedPage);
+mainContent.appendChild(inboxPage);
+//buttons
+let todayButton=document.querySelector("#today");
+let completedButton=document.querySelector("#completed");
+let inboxButton=document.querySelector("#inbox");
+//lists
+let togglePLList=[todayPage, completedPage, inboxPage];
+let togglePLButtonList=[todayButton, inboxButton, completedButton];
+//function to activate
+function setActive(activeContent, activeButton){
+   togglePLList.forEach(c=>c.style.display="none");
+   togglePLButtonList.forEach(b=>b.classList.remove("pressed"));
+   activeContent.style.display="block";
+   activeButton.classList.add("pressed");
+}
+
+todayButton.addEventListener("click",()=>setActive(todayPage,todayButton));
+inboxButton.addEventListener("click",()=>{
+   setActive(inboxPage,inboxButton);
+});
+completedButton.addEventListener("click",()=>{
+   setActive(completedPage,completedButton);
+});
 
 let selectTodo= document.querySelector("#selectTodo");
 //ProjectCreation
@@ -21,6 +54,15 @@ function createProject(name){
    option.setAttribute("id",`option${projectId}`);
    option.textContent=name;
    selectTodo.appendChild(option);
+   //projectPage setup
+   let tempProjectPage=createProjectPage(tempProject);
+   tempProject.addEventListener("click",()=>{
+      togglePLList.push(tempProjectPage);
+      togglePLButtonList.push(tempProject);
+      tempProjectPage.style.display="none";
+      mainContent.append(tempProjectPage);
+      setActive(tempProjectPage,tempProject);
+   });
    //delete
    let deleteitem=document.querySelector(`#delete${projectId}`);
    deleteitem.addEventListener("click",()=>{
@@ -52,7 +94,6 @@ function createProject(name){
       tempOption.textContent=tempInput.value;
       console.log(tempOption);
    });
-   console.log(tempProject);
    projectId++;
 }
 
@@ -117,38 +158,3 @@ projectDropdown.addEventListener("click",()=>{
    projectListDom.classList.toggle("hidden");
 });
 
-//<-------mainContent-------->
-//main content
-let mainContent=document.querySelector("#mainContent");
-todayPage.style.display="none";
-inboxPage.style.display="none";
-completedPage.style.display="none";
-mainContent.appendChild(todayPage);
-mainContent.appendChild(completedPage);
-mainContent.appendChild(inboxPage);
-//buttons
-let todayButton=document.querySelector("#today");
-let completedButton=document.querySelector("#completed");
-let inboxButton=document.querySelector("#inbox");
-//lists
-let togglePLList=[todayPage, completedPage, inboxPage];
-let togglePLButtonList=[todayButton, inboxButton, completedButton];
-//function to activate
-function setActive(activeContent, activeButton){
-   togglePLList.forEach(c=>c.style.display="none");
-   togglePLButtonList.forEach(b=>b.classList.remove("pressed"));
-   activeContent.style.display="block";
-   activeButton.classList.add("pressed");
-}
-
-todayButton.addEventListener("click",()=>setActive(todayPage,todayButton));
-inboxButton.addEventListener("click",()=>{
-   setActive(inboxPage,inboxButton);
-});
-completedButton.addEventListener("click",()=>{
-   setActive(completedPage,completedButton);
-});
-
-function addProjectPage(){
-   
-}
