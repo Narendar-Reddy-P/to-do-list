@@ -14,20 +14,20 @@
       </div>
 
       <ol>
-         <li>
+         <li id="addTodo">
             <img src="../media/svg/plus.svg" alt="" class="headicon">
             <div class="headlist">Add task</div>
             <div></div>
          </li>
-         <li>
+         <li id="inbox">
             <img src="../media/svg/inbox.svg" alt="" class="headicon">
             <div class="headlist">Inbox</div>
          </li>
-         <li>
+         <li id="today">
             <img src="../media/svg/calender-svgrepo-com.svg" alt="" class="headicon">
             <div class="headlist">Today</div>
          </li>
-         <li>
+         <li id="completed">
             <img src="../media/svg/tickmark.svg.svg" alt="" class="headicon">
             <div class="headlist">Completed</div>
             <div></div>
@@ -68,8 +68,8 @@
       <div id="mainContent">
 
       </div>
-      <!-- <div id="addTodo"> -->
-         <!-- <form action="">
+      <dialog id="todoDialog">
+         <form action="">
             <label for="textTodo">Add Task</label>
             <input type="text" id="textTodo"/>
             <label for="descriptionTodo">Description</label>
@@ -87,8 +87,8 @@
             <input type="checkbox" value="Completed" id="checkboxTodo">
             <label for="checkboxTodo">Status</label>
             <button id="saveTodo" type="submit">Save</button>
-         </form> -->
-      <!-- </div> -->
+         </form> 
+      </dialog>
    </div>
 </body>
 </html>

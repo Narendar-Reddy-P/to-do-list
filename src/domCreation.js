@@ -21,7 +21,6 @@ export function domProject(name,id){
    editImg.setAttribute("class","headicon");
    editImg.setAttribute("id",`edit${id}`);
    editImg.dataset.id=id;
-   console.log(editImg.dataset.id);
    li.appendChild(editImg);
    //delete
    let deleteImg=document.createElement("img");
