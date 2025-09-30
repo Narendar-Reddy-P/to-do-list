@@ -1,4 +1,3 @@
-import { ToDo } from "./todo";
 import {Project} from "./project";
 import { domProject } from "./domCreation";
 import {mainContent as todayPage} from "./Today";
@@ -31,13 +30,19 @@ function setActive(activeContent, activeButton){
    activeButton.classList.add("pressed");
    console.log(`in set active ${activeContent.id}`)
 }
-
-todayButton.addEventListener("click",()=>setActive(todayPage,todayButton));
+setActive(inboxPage,inboxButton);
+mainContent.dataset.currentPage=`inboxPage`;
+todayButton.addEventListener("click",()=>{
+   setActive(todayPage,todayButton);
+   mainContent.dataset.currentPage=`todayButton`;
+});
 inboxButton.addEventListener("click",()=>{
    setActive(inboxPage,inboxButton);
+   mainContent.dataset.currentPage=`inboxButton`;
 });
 completedButton.addEventListener("click",()=>{
    setActive(completedPage,completedButton);
+   mainContent.dataset.currentPage=`completedButton`;
 });
 //select Todo is todoDialog
 let selectTodo= document.querySelector("#selectTodo");
@@ -61,8 +66,11 @@ function createProject(name){
    togglePLList.push(tempProjectPage);
    togglePLButtonList.push(tempProject);
    mainContent.append(tempProjectPage);
-   tempProject.addEventListener("click",()=>{
+   //project Name event listener
+   let tempProjectName=document.querySelector(`#projectName${projectId}`);
+   tempProjectName.addEventListener("click",()=>{
       setActive(tempProjectPage,tempProject);
+      mainContent.dataset.currentPage=tempProjectName.id;
    });
    //delete
    let deleteitem=document.querySelector(`#delete${projectId}`);
@@ -75,16 +83,12 @@ function createProject(name){
       togglePLList.splice(togglePLList.indexOf(tempProjectPage),1);
       togglePLButtonList.splice(togglePLButtonList.indexOf(tempPL),1);
       tempProjectPage.style.display="none";
-      //retriving inbox page and inbox button
       tempProjectPage.remove();
       tempPL.remove();
-      console.log(togglePLButtonList);
-      console.log(togglePLList);
-      console.log(inboxPage);
-      inboxPage.style.display="block";
-      inboxButton.classList.add("pressed");
-      setActive(inboxPage,inboxButton);
-      console.log(mainContent);
+      if(mainContent.dataset.currentPage==tempProjectName.id){
+         setActive(inboxPage,inboxButton);
+         mainContent.dataset.currentPage=`inboxPage`;
+      }
    });
    //edit dialog opening
    let editItem=document.querySelector(`#edit${projectId}`);
