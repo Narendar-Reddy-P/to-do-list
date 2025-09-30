@@ -29,6 +29,7 @@ function setActive(activeContent, activeButton){
    togglePLButtonList.forEach(b=>b.classList.remove("pressed"));
    activeContent.style.display="block";
    activeButton.classList.add("pressed");
+   console.log(`in set active ${activeContent.id}`)
 }
 
 todayButton.addEventListener("click",()=>setActive(todayPage,todayButton));
@@ -38,7 +39,7 @@ inboxButton.addEventListener("click",()=>{
 completedButton.addEventListener("click",()=>{
    setActive(completedPage,completedButton);
 });
-
+//select Todo is todoDialog
 let selectTodo= document.querySelector("#selectTodo");
 //ProjectCreation
 let projectId=1;
@@ -56,29 +57,41 @@ function createProject(name){
    selectTodo.appendChild(option);
    //projectPage setup
    let tempProjectPage=createProjectPage(tempProject);
+   tempProjectPage.style.display="none";
+   togglePLList.push(tempProjectPage);
+   togglePLButtonList.push(tempProject);
+   mainContent.append(tempProjectPage);
    tempProject.addEventListener("click",()=>{
-      togglePLList.push(tempProjectPage);
-      togglePLButtonList.push(tempProject);
-      tempProjectPage.style.display="none";
-      mainContent.append(tempProjectPage);
       setActive(tempProjectPage,tempProject);
    });
    //delete
    let deleteitem=document.querySelector(`#delete${projectId}`);
    deleteitem.addEventListener("click",()=>{
       let tempID=deleteitem.dataset.id;
-      delete projectList[tempID];
+      delete projectList[tempID];//project list mean just a line in nav
       let tempPL=document.querySelector(`#project${tempID}`);
-      tempPL.remove();
       let tempOption=document.querySelector(`#option${tempID}`);
       tempOption.remove();
+      togglePLList.splice(togglePLList.indexOf(tempProjectPage),1);
+      togglePLButtonList.splice(togglePLButtonList.indexOf(tempPL),1);
+      tempProjectPage.style.display="none";
+      //retriving inbox page and inbox button
+      tempProjectPage.remove();
+      tempPL.remove();
+      console.log(togglePLButtonList);
+      console.log(togglePLList);
+      console.log(inboxPage);
+      inboxPage.style.display="block";
+      inboxButton.classList.add("pressed");
+      setActive(inboxPage,inboxButton);
+      console.log(mainContent);
    });
    //edit dialog opening
    let editItem=document.querySelector(`#edit${projectId}`);
    editItem.addEventListener("click",()=>{
       let tempID=editItem.dataset.id;
       let tempDialog=document.querySelector(`#dialog${tempID}`);
-      tempDialog.show();  
+      tempDialog.show(); 
    });
    // actual project name edit
    let saveEditedProjectName=document.querySelector(`#save${projectId}`);
@@ -92,7 +105,9 @@ function createProject(name){
       projectList[`${tempID}`].editName(tempInput.value);
       let tempOption=document.querySelector(`#option${tempID}`);
       tempOption.textContent=tempInput.value;
-      console.log(tempOption);
+      let projectPageTitle=document.querySelector(`#projectPageTitle${tempID}`);
+      console.log(projectPageTitle);
+      projectPageTitle.textContent=tempInput.value;
    });
    projectId++;
 }
@@ -120,23 +135,6 @@ let addTodoButton=document.querySelector("#addTodo");
 addTodoButton.addEventListener("click",()=>{
    todoDialog.showModal();
 });
-
-
-// //ToDoCreation
-// let textTodo= document.querySelector("#textTodo");
-// let descriptionTodo= document.querySelector("#descriptionTodo");
-
-// let priorityTodo= document.querySelector("#priorityTodo");
-// let checkboxTodo= document.querySelector("#checkboxTodo");
-// let saveTodo= document.querySelector("#saveTodo");
-
-// saveTodo.addEventListener("click",()=>{
-
-// });
-
-
-// //main
-// let projectNone= new Project("none",0);
 
 //DOM stuff
 const head=document.querySelector("#head");

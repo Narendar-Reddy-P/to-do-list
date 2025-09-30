@@ -1,4 +1,3 @@
-let mainContent= document.querySelector("#mainContent");
 export function createProjectPage(project){
    let content=document.createElement("div");
    let id= project.dataset.id;
@@ -7,7 +6,8 @@ export function createProjectPage(project){
    let projectName=document.querySelector(`#projectName${id}`);
    let title=document.createElement("div");
    title.textContent=projectName.textContent;
-   title.setAttribute("id","pageTitle");
+   title.setAttribute("class","pageTitle");
+   title.setAttribute("id",`projectPageTitle${id}`);
    content.append(title);
    console.log(content);
    return content;
