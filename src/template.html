@@ -69,14 +69,16 @@
 
       </div>
       <dialog id="todoDialog">
-         <form action="">
+         <form>
             <label for="textTodo">Add Task</label>
             <input type="text" id="textTodo"/>
             <label for="descriptionTodo">Description</label>
             <textarea id="descriptionTodo"></textarea>
             <label for="selectTodo">Project</label>
             <select name="Type" id="selectTodo">
-               <option value="none">Inbox</option>
+               <option value="inbox" id="inboxOption">Inbox</option>
+               <option value="today" id="todayOption">Today</option>
+               <option value="completed" id="completedOption">Completed</option>
             </select>
             <label for="priorityTodo">Priority</label>
             <select name="Type" id="priorityTodo">
@@ -86,6 +88,7 @@
             </select>
             <input type="checkbox" value="Completed" id="checkboxTodo">
             <label for="checkboxTodo">Status</label>
+            <button id="cancelTodoDialog">Cancel</button>
             <button id="saveTodoDialog" type="submit">Save</button>
          </form> 
       </dialog>
